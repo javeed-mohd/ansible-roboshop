@@ -7,7 +7,7 @@
                 "changed": true,
                 "failed": false,
                 "instance_ids": [
-                    "i-0676384707f60de66"
+                    "i-0b6960be594019c39"
                 ],
                 "instances": [
                     {
@@ -17,11 +17,11 @@
                             {
                                 "device_name": "/dev/sda1",
                                 "ebs": {
-                                    "attach_time": "2026-02-16T17:51:46+00:00",
+                                    "attach_time": "2026-02-17T09:28:19+00:00",
                                     "delete_on_termination": true,
                                     "ebs_card_index": 0,
                                     "status": "attaching",
-                                    "volume_id": "vol-0278d43d2ee8d63f9"
+                                    "volume_id": "vol-0b70c68433f303137"
                                 }
                             }
                         ],
@@ -29,7 +29,7 @@
                         "capacity_reservation_specification": {
                             "capacity_reservation_preference": "open"
                         },
-                        "client_token": "12e7a98f1de24b8086d9541d0f88a9c3",
+                        "client_token": "8b643558db274422b51c65ce49f36828",
                         "cpu_options": {
                             "core_count": 1,
                             "threads_per_core": 2
@@ -45,9 +45,9 @@
                         },
                         "hypervisor": "xen",
                         "image_id": "ami-0220d79f3f480ecf5",
-                        "instance_id": "i-0676384707f60de66",
+                        "instance_id": "i-0b6960be594019c39",
                         "instance_type": "t3.micro",
-                        "launch_time": "2026-02-16T17:51:45+00:00",
+                        "launch_time": "2026-02-17T09:28:18+00:00",
                         "maintenance_options": {
                             "auto_recovery": "default",
                             "reboot_migration": "default"
@@ -67,12 +67,12 @@
                             {
                                 "association": {
                                     "ip_owner_id": "amazon",
-                                    "public_dns_name": "ec2-35-153-49-214.compute-1.amazonaws.com",
-                                    "public_ip": "35.153.49.214"
+                                    "public_dns_name": "ec2-3-237-224-223.compute-1.amazonaws.com",
+                                    "public_ip": "3.237.224.223"
                                 },
                                 "attachment": {
-                                    "attach_time": "2026-02-16T17:51:45+00:00",
-                                    "attachment_id": "eni-attach-06d8453b083f1b59d",
+                                    "attach_time": "2026-02-17T09:28:18+00:00",
+                                    "attachment_id": "eni-attach-0de8ec3841bed3bef",
                                     "delete_on_termination": true,
                                     "device_index": 0,
                                     "network_card_index": 0,
@@ -87,24 +87,24 @@
                                 ],
                                 "interface_type": "interface",
                                 "ipv6_addresses": [],
-                                "mac_address": "02:df:27:97:c1:cd",
-                                "network_interface_id": "eni-0f6cb314b82e690c8",
+                                "mac_address": "02:b4:a4:c8:7a:ad",
+                                "network_interface_id": "eni-04e1d441824c75c59",
                                 "operator": {
                                     "managed": false
                                 },
                                 "owner_id": "996669628469",
-                                "private_dns_name": "ip-172-31-3-54.ec2.internal",
-                                "private_ip_address": "172.31.3.54",
+                                "private_dns_name": "ip-172-31-8-224.ec2.internal",
+                                "private_ip_address": "172.31.8.224",
                                 "private_ip_addresses": [
                                     {
                                         "association": {
                                             "ip_owner_id": "amazon",
-                                            "public_dns_name": "ec2-35-153-49-214.compute-1.amazonaws.com",
-                                            "public_ip": "35.153.49.214"
+                                            "public_dns_name": "ec2-3-237-224-223.compute-1.amazonaws.com",
+                                            "public_ip": "3.237.224.223"
                                         },
                                         "primary": true,
-                                        "private_dns_name": "ip-172-31-3-54.ec2.internal",
-                                        "private_ip_address": "172.31.3.54"
+                                        "private_dns_name": "ip-172-31-8-224.ec2.internal",
+                                        "private_ip_address": "172.31.8.224"
                                     }
                                 ],
                                 "source_dest_check": true,
@@ -126,16 +126,16 @@
                             "tenancy": "default"
                         },
                         "platform_details": "Red Hat Enterprise Linux",
-                        "private_dns_name": "ip-172-31-3-54.ec2.internal",
+                        "private_dns_name": "ip-172-31-8-224.ec2.internal",
                         "private_dns_name_options": {
                             "enable_resource_name_dns_a_record": false,
                             "enable_resource_name_dns_aaaa_record": false,
                             "hostname_type": "ip-name"
                         },
-                        "private_ip_address": "172.31.3.54",
+                        "private_ip_address": "172.31.8.224",
                         "product_codes": [],
-                        "public_dns_name": "ec2-35-153-49-214.compute-1.amazonaws.com",
-                        "public_ip_address": "35.153.49.214",
+                        "public_dns_name": "ec2-3-237-224-223.compute-1.amazonaws.com",
+                        "public_ip_address": "3.237.224.223",
                         "root_device_name": "/dev/sda1",
                         "root_device_type": "ebs",
                         "security_groups": [
@@ -158,7 +158,7 @@
                             "Project": "roboshop"
                         },
                         "usage_operation": "RunInstances:0010",
-                        "usage_operation_update_time": "2026-02-16T17:51:45+00:00",
+                        "usage_operation_update_time": "2026-02-17T09:28:18+00:00",
                         "virtualization_type": "hvm",
                         "vpc_id": "vpc-0ef3ab23300179d8e"
                     }
@@ -233,7 +233,7 @@
                 "item": "mongodb",
                 "spec": {
                     "BlockDeviceMappings": [],
-                    "ClientToken": "12e7a98f1de24b8086d9541d0f88a9c3",
+                    "ClientToken": "8b643558db274422b51c65ce49f36828",
                     "ImageId": "ami-0220d79f3f480ecf5",
                     "InstanceType": "t3.micro",
                     "MaxCount": 1,
@@ -298,7 +298,7 @@
                 "changed": true,
                 "failed": false,
                 "instance_ids": [
-                    "i-0fff80f0dbdf5a5bf"
+                    "i-0b8006d3b5a172c5e"
                 ],
                 "instances": [
                     {
@@ -308,11 +308,11 @@
                             {
                                 "device_name": "/dev/sda1",
                                 "ebs": {
-                                    "attach_time": "2026-02-16T17:51:51+00:00",
+                                    "attach_time": "2026-02-17T09:28:23+00:00",
                                     "delete_on_termination": true,
                                     "ebs_card_index": 0,
                                     "status": "attaching",
-                                    "volume_id": "vol-08fb123e0c7473f97"
+                                    "volume_id": "vol-0c5e480c1bd0d6bc3"
                                 }
                             }
                         ],
@@ -320,7 +320,7 @@
                         "capacity_reservation_specification": {
                             "capacity_reservation_preference": "open"
                         },
-                        "client_token": "d6bf116fdead4eeca4410816e302d9ae",
+                        "client_token": "7d6429117ef64f08b19d2b702e548aca",
                         "cpu_options": {
                             "core_count": 1,
                             "threads_per_core": 2
@@ -336,9 +336,9 @@
                         },
                         "hypervisor": "xen",
                         "image_id": "ami-0220d79f3f480ecf5",
-                        "instance_id": "i-0fff80f0dbdf5a5bf",
+                        "instance_id": "i-0b8006d3b5a172c5e",
                         "instance_type": "t3.micro",
-                        "launch_time": "2026-02-16T17:51:50+00:00",
+                        "launch_time": "2026-02-17T09:28:23+00:00",
                         "maintenance_options": {
                             "auto_recovery": "default",
                             "reboot_migration": "default"
@@ -358,12 +358,12 @@
                             {
                                 "association": {
                                     "ip_owner_id": "amazon",
-                                    "public_dns_name": "ec2-34-200-251-252.compute-1.amazonaws.com",
-                                    "public_ip": "34.200.251.252"
+                                    "public_dns_name": "ec2-52-3-225-161.compute-1.amazonaws.com",
+                                    "public_ip": "52.3.225.161"
                                 },
                                 "attachment": {
-                                    "attach_time": "2026-02-16T17:51:50+00:00",
-                                    "attachment_id": "eni-attach-081c9677e30e32fdf",
+                                    "attach_time": "2026-02-17T09:28:23+00:00",
+                                    "attachment_id": "eni-attach-06a7a2739c0cdb4b4",
                                     "delete_on_termination": true,
                                     "device_index": 0,
                                     "network_card_index": 0,
@@ -378,24 +378,24 @@
                                 ],
                                 "interface_type": "interface",
                                 "ipv6_addresses": [],
-                                "mac_address": "02:9a:98:4a:0a:17",
-                                "network_interface_id": "eni-00473e055d3869212",
+                                "mac_address": "02:29:43:51:64:eb",
+                                "network_interface_id": "eni-08b9e1d2cf78546d6",
                                 "operator": {
                                     "managed": false
                                 },
                                 "owner_id": "996669628469",
-                                "private_dns_name": "ip-172-31-13-32.ec2.internal",
-                                "private_ip_address": "172.31.13.32",
+                                "private_dns_name": "ip-172-31-8-139.ec2.internal",
+                                "private_ip_address": "172.31.8.139",
                                 "private_ip_addresses": [
                                     {
                                         "association": {
                                             "ip_owner_id": "amazon",
-                                            "public_dns_name": "ec2-34-200-251-252.compute-1.amazonaws.com",
-                                            "public_ip": "34.200.251.252"
+                                            "public_dns_name": "ec2-52-3-225-161.compute-1.amazonaws.com",
+                                            "public_ip": "52.3.225.161"
                                         },
                                         "primary": true,
-                                        "private_dns_name": "ip-172-31-13-32.ec2.internal",
-                                        "private_ip_address": "172.31.13.32"
+                                        "private_dns_name": "ip-172-31-8-139.ec2.internal",
+                                        "private_ip_address": "172.31.8.139"
                                     }
                                 ],
                                 "source_dest_check": true,
@@ -417,16 +417,16 @@
                             "tenancy": "default"
                         },
                         "platform_details": "Red Hat Enterprise Linux",
-                        "private_dns_name": "ip-172-31-13-32.ec2.internal",
+                        "private_dns_name": "ip-172-31-8-139.ec2.internal",
                         "private_dns_name_options": {
                             "enable_resource_name_dns_a_record": false,
                             "enable_resource_name_dns_aaaa_record": false,
                             "hostname_type": "ip-name"
                         },
-                        "private_ip_address": "172.31.13.32",
+                        "private_ip_address": "172.31.8.139",
                         "product_codes": [],
-                        "public_dns_name": "ec2-34-200-251-252.compute-1.amazonaws.com",
-                        "public_ip_address": "34.200.251.252",
+                        "public_dns_name": "ec2-52-3-225-161.compute-1.amazonaws.com",
+                        "public_ip_address": "52.3.225.161",
                         "root_device_name": "/dev/sda1",
                         "root_device_type": "ebs",
                         "security_groups": [
@@ -449,7 +449,7 @@
                             "Project": "roboshop"
                         },
                         "usage_operation": "RunInstances:0010",
-                        "usage_operation_update_time": "2026-02-16T17:51:50+00:00",
+                        "usage_operation_update_time": "2026-02-17T09:28:23+00:00",
                         "virtualization_type": "hvm",
                         "vpc_id": "vpc-0ef3ab23300179d8e"
                     }
@@ -524,7 +524,7 @@
                 "item": "catalogue",
                 "spec": {
                     "BlockDeviceMappings": [],
-                    "ClientToken": "d6bf116fdead4eeca4410816e302d9ae",
+                    "ClientToken": "7d6429117ef64f08b19d2b702e548aca",
                     "ImageId": "ami-0220d79f3f480ecf5",
                     "InstanceType": "t3.micro",
                     "MaxCount": 1,
