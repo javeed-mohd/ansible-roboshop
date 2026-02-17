@@ -1,5 +1,7 @@
-# ansible-playbook -i localhost(If we don' want to give inventory file then give -i localhost or multiple ip addresses using , ),   -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}'  -e action=delete roboshop.yaml
+# 1. ansible-playbook -i localhost(If we don' want to give inventory file then give -i localhost or multiple ip addresses using , ),   -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}'  -e action=delete roboshop.yaml
+# It is used to delete the instances after usage
 # ansible-playbook -i localhost, -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}' roboshop.yaml
+# It is used to create the ec2_instances and route 53 records
 
 - name: Create EC2 instances and R53 records
   hosts: all
