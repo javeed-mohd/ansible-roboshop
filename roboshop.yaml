@@ -11,6 +11,7 @@
     - mongodb
     - catalogue
   tasks:
+  ### CREATE ###
   - name: Create EC2 instance
     amazon.aws.ec2_instance:
       instance_type: "t3.micro"
@@ -54,8 +55,18 @@
       wait: true
     loop: "{{ ec2_output.results }}" # From results list
     when: # and
-    - item.item == "frontend" # Then only create r53 record using public ip_address
+    - item.item == "frontend" # Frontend means then only create r53 record using public ip_address
     - action == "create"
+
+  - name: Delete R53 records
+    amazon.aws.route53:
+      state: absent
+      zone: "{{ domain_name }}"
+      record: "{{ item }}-{{ env }}.{{ domain_name }}" # roboshop-dev.devopsdaws.online
+      type: A
+      ttl: 1 # Time to live
+    loop: "{{ instances }}"
+    when: action == "delete"
 
   - name: Delete EC2 instance
     amazon.aws.ec2_instance:
@@ -65,3 +76,4 @@
       image_id: "{{ ami_id }}"
       name: "{{ item }}-{{ env }}"
     loop: "{{ instances }}"
+    when: action == "delete"
