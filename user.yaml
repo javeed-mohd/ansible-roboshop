@@ -48,7 +48,7 @@
     community.general.npm:
       path: /app
 
-  - name: Copy user service # If we use copy module it copies as it is, so rather than using copy we use template for this...
+  - name: Copy user service # It is like copy, but it supports dynamic values (variables)
     ansible.builtin.template:
       src: user.service
       dest: /etc/systemd/system/user.service
