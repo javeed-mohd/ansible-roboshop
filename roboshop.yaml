@@ -32,9 +32,21 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ item.item }}-{{ env }}.{{ domain_name }}" # mongodb-dev.devopsdaws.online
+      record: "{{ item.item }}-{{ env }}.{{ domain_name }}" # mongodb-dev.devopsdaws.online, frontend-dev.devopsdaws.online
       type: A
       ttl: 1 # Time to live
       value: "{{ item.instances[0].private_ip_address }}" 
       wait: true
     loop: "{{ ec2_output.results }}" # From results list
+
+  - name: Create R53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ domain_name }}"
+      record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.devopsdaws.online
+      type: A
+      ttl: 1 # Time to live
+      value: "{{ item.instances[0].public_ip_address }}" 
+      wait: true
+    loop: "{{ ec2_output.results }}" # From results list
+    when: item.item == "frontend" # Then only create r53 record using public ip_address
