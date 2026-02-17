@@ -1,3 +1,4 @@
+# ansible-playbook -i localhost(If we don' want to give inventory file then give -i localhost or multiple ip addresses using , ),   -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}'  -e action=delete roboshop.yaml
 - name: Create EC2 instances and R53 records
   hosts: all
   connection: local
