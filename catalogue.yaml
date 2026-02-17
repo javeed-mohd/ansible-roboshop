@@ -28,7 +28,8 @@
       url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
       dest: /tmp/catalogue.zip
 
-  - name: Unarchive the catalogue
+  - name: Unarchive the catalogue  # Remote machine -> catalogue
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
+      remote_src: yes # Provide yes if file already existed in the remote machine
