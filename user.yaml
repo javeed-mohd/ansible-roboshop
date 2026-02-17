@@ -1,5 +1,5 @@
-- name: Cart configure
-  hosts: cart
+- name: User configure
+  hosts: user
   become: yes
   tasks:
   - name: Enable nodejs 20
@@ -28,19 +28,19 @@
       path: /app
       state: directory
 
-  - name: Delete cart zip file # Before downloading, we need to delete it if existed.
+  - name: Delete user zip file # Before downloading, we need to delete it if existed.
     ansible.builtin.file:
-      path: /tmp/cart.zip
+      path: /tmp/user.zip
       state: absent
 
-  - name: Download the cart
+  - name: Download the user
     ansible.builtin.get_url:
-      url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
-      dest: /tmp/cart.zip
+      url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+      dest: /tmp/user.zip
 
-  - name: Unarchive the cart  # Remote machine -> cart
+  - name: Unarchive the user  # Remote machine -> user
     ansible.builtin.unarchive:
-      src: /tmp/cart.zip
+      src: /tmp/user.zip
       dest: /app
       remote_src: yes # Provide yes if file already existed in the remote machine
 
@@ -48,17 +48,17 @@
     community.general.npm:
       path: /app
 
-  - name: Copy cart service
+  - name: Copy user service
     ansible.builtin.template:
-      src: cart.service
-      dest: /etc/systemd/system/cart.service
+      src: user.service
+      dest: /etc/systemd/system/user.service
 
   - name: Daemon reload
     ansible.builtin.systemd_service:
       daemon_reload: true
 
-  - name: Start the cart
+  - name: Start the user
     ansible.builtin.service:
-      name: cart
+      name: user
       state: restarted
       enabled: yes
