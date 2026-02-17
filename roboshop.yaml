@@ -62,17 +62,17 @@
     - action == "create"
 
   ### DELETE ###
-  - name: Delete R53 record for frontend
-    amazon.aws.route53:
-      state: absent
-      zone: "{{ domain_name }}"
-      record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.devopsdaws.online
-      type: A
-      ttl: 1 # Time to live 
-    loop: "{{ instances }}" 
-    when: # and
-    - item.item == "frontend" # Frontend means then only create r53 record using public ip_address
-    - action == "delete"
+  # - name: Delete R53 record for frontend
+  #   amazon.aws.route53:
+  #     state: absent
+  #     zone: "{{ domain_name }}"
+  #     record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.devopsdaws.online
+  #     type: A
+  #     ttl: 1 # Time to live 
+  #   loop: "{{ instances }}" 
+  #   when: # and
+  #   - item.item == "frontend" # Frontend means then only create r53 record using public ip_address
+  #   - action == "delete"
 
   - name: Delete R53 records
     amazon.aws.route53:
