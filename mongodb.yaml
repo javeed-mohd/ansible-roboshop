@@ -1,4 +1,4 @@
-- name: Mongodb configure
+- name: MongoDB server configure
   hosts: mongodb
   become: yes
   tasks:
@@ -7,7 +7,7 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo # cp mongo.repo /etc/yum.repos.d/mongo.repo --> equivalent to earlier
   
-  - name: Install mongodb server
+  - name: Install MongoDB server
     ansible.builtin.dnf:
       name: mongodb-org # We can also use package module but dnf is preferable
       state: present
@@ -18,13 +18,13 @@
       regexp: '127.0.0.1'
       replace: '0.0.0.0'
 
-  - name: Start and enable mongodb
+  - name: Start and Enable MongoDB
     ansible.builtin.service:
       name: mongod
       enabled: yes
       state: started
 
-  # - name: Restart mongodb
+  # - name: Restart MongoDB
   #   ansible.builtin.service:
   #     name: mongod
   #     state: restarted

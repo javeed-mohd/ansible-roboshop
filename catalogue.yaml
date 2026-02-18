@@ -5,7 +5,7 @@
   - name: Enable nodejs 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
     
-  - name: Install nodejs
+  - name: Install NodeJS
     ansible.builtin.dnf:
       name: nodejs
       state: present
@@ -58,7 +58,7 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
 
-  - name: Install mongodb client
+  - name: Install MongoDB client
     ansible.builtin.dnf:
       name: mongodb-mongosh # We can also use package module but dnf is preferable
       state: present

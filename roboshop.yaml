@@ -3,7 +3,7 @@
 # ansible-playbook -i localhost, -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}' roboshop.yaml
 # It is used to create the ec2_instances and route 53 records
 
-- name: Create EC2 instances and R53 records
+- name: Create EC2 Instances and R53 Records
   hosts: all
   connection: local
   vars:
@@ -17,7 +17,7 @@
     - catalogue
   tasks:
   ### CREATE ###
-  - name: Create EC2 instance
+  - name: Create EC2 Instance
     amazon.aws.ec2_instance:
       instance_type: "t3.micro"
       security_group: "{{ sg_id }}"
@@ -88,7 +88,7 @@
     loop: "{{ instances }}"
     when: action == "delete"
 
-  - name: Delete EC2 instance
+  - name: Delete EC2 Instance
     amazon.aws.ec2_instance:
       state: absent
       instance_type: "t3.micro"

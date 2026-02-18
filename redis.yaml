@@ -5,7 +5,7 @@
   - name: Enable redis 7
     ansible.builtin.command: dnf module enable redis:7 -y
 
-  - name: Install redis
+  - name: Install Redis
     ansible.builtin.dnf:
       name: redis
       state: present
@@ -22,7 +22,7 @@
       regexp: 'protected-mode'
       line: 'protected-mode no'
 
-  - name: Start and enable redis
+  - name: Start and Enable Redis
     ansible.builtin.service:
       name: redis
       state: restarted
