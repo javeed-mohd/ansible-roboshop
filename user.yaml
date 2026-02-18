@@ -21,7 +21,7 @@
   - name: Delete app directory # Before creating an app directory, we need to delete it if previously existed.
     ansible.builtin.file:
       path: /app
-      state: directory
+      state: absent
 
   - name: Create app directory
     ansible.builtin.file:
@@ -33,7 +33,7 @@
       path: /tmp/user.zip
       state: absent
 
-  - name: Download the user
+  - name: Download the User
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
       dest: /tmp/user.zip
@@ -57,7 +57,7 @@
     ansible.builtin.systemd_service:
       daemon_reload: true
 
-  - name: Start the user
+  - name: Start the User
     ansible.builtin.service:
       name: user
       state: restarted

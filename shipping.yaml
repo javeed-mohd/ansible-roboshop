@@ -1,0 +1,91 @@
+- name: Shipping server configure
+  hosts: shipping
+  become: yes
+  tasks:
+  - name: Install Maven and MySQL
+    ansible.builtin.dnf:
+      name: "{{ item }}"
+      state: present
+    loop:
+    - maven
+    - mysql
+
+  - name: Create system user roboshop
+    ansible.builtin.user:
+      name: roboshop
+      system: true
+      home: /app
+      shell: /sbin/nologin
+      comment: "Roboshop system user"
+
+  - name: Delete app directory # Befoe creating an app directory, we need to delete it if previously existed.
+    ansible.builtin.file:
+      path: /app
+      state: absent
+
+  - name: Create app directory
+    ansible.builtin.file:
+      path: /app
+      state: directory
+
+  - name: Delete shipping zip file # Before downloading, we need to delete it if existed.
+    ansible.builtin.file:
+      path: /tmp/shipping.zip
+      state: absent
+
+  - name: Download the shipping
+    ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip
+      dest: /tmp/shipping.zip
+
+  - name: Unarchive the shipping  # Remote machine -> shipping
+    ansible.builtin.unarchive:
+      src: /tmp/shipping.zip
+      dest: /app
+      remote_src: yes # Provide yes if file already existed in the remote machine
+
+  - name: Install dependencies
+    ansible.builtin.command: mvn  clean package
+    args: 
+      chdir: /app # is used to pass additional parameters to a module like working directory, conditions, or file checks (Change directory before running the mvn clean package command)
+
+  - name: Install dependencies
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar # Moving and renaming the file
+    args:
+      chdir: /app
+
+  - name: Create systemctl service # Template is like copy module, but it supports dynamic values (variables)...
+    ansible.builtin.template:
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
+
+  - name: Daemon reload
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+
+  - name: Install dependencies # Pip is used to install, upgrade, or remove Python packages.
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - cryptography
+    - PyMySQL
+
+  - name: Import Shipping data # Database collection module is used to create, delete and  import/export MySQL dbs
+    community.mysql.mysql_db:
+      state: import
+      name: all
+      login_host: "{{ MYSQL_HOST }}"
+      login_user: root
+      login_password: RoboShop@1
+      target: "{{ item}}"
+    loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql
+    - /app/db/master-data.sql
+
+  - name: Start and Enable Shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted
+      enabled: yes

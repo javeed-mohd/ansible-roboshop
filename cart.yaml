@@ -21,7 +21,7 @@
   - name: Delete app directory # Befoe creating an app directory, we need to delete it if previously existed.
     ansible.builtin.file:
       path: /app
-      state: directory
+      state: absent
 
   - name: Create app directory
     ansible.builtin.file:
@@ -33,12 +33,12 @@
       path: /tmp/cart.zip
       state: absent
 
-  - name: Download the cart
+  - name: Download the Cart
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
       dest: /tmp/cart.zip
 
-  - name: Unarchive the cart  # Remote machine -> cart
+  - name: Unarchive the Cart  # Remote machine -> cart
     ansible.builtin.unarchive:
       src: /tmp/cart.zip
       dest: /app
@@ -57,7 +57,7 @@
     ansible.builtin.systemd_service:
       daemon_reload: true
 
-  - name: Start the cart
+  - name: Start the Cart
     ansible.builtin.service:
       name: cart
       state: restarted
